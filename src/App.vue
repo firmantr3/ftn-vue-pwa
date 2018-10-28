@@ -1,28 +1,66 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <loading ref="loading"/>
+
+    <transition name="page" mode="out-in">
+      <component v-if="layout" :is="layout"/>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Loading from '@/components/Loading'
+
+// Load layout components dynamically.
+const requireContext = require.context('@/layouts', false, /.*\.vue$/)
+
+const layouts = requireContext.keys()
+  .map(file =>
+    [file.replace(/(^.\/)|(\.vue$)/g, ''), requireContext(file)]
+  )
+  .reduce((components, [name, component]) => {
+    components[name] = component.default || component
+    return components
+  }, {})
 
 export default {
-  name: 'app',
+  el: '#app',
+
   components: {
-    HelloWorld
+    Loading
+  },
+
+  data: () => ({
+    layout: null,
+    defaultLayout: 'default'
+  }),
+
+  metaInfo () {
+    const { appName } = window.config
+
+    return {
+      title: appName,
+      titleTemplate: `%s · ${appName}`
+    }
+  },
+
+  mounted () {
+    this.$loading = this.$refs.loading
+  },
+
+  methods: {
+    /**
+     * Set the application layout.
+     *
+     * @param {String} layout
+     */
+    setLayout (layout) {
+      if (!layout || !layouts[layout]) {
+        layout = this.defaultLayout
+      }
+
+      this.layout = layouts[layout]
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
