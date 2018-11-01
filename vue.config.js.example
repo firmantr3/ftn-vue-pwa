@@ -1,4 +1,7 @@
 module.exports = {
+    baseUrl: process.env.NODE_ENV === 'production'
+        ? '/ftn-vue-pwa-demo/'
+        : '/',
     css: {
         loaderOptions: {
             // pass options to sass-loader

@@ -4,7 +4,8 @@ my vuejs scaffolding frontend for laravel apps
 
 ## Project setup
 ```
-npm install
+npm install &&
+cp vue.config.js.example vue.config.js
 ```
 
 ### Compiles and hot-reloads for development
