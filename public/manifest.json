@@ -1,6 +1,6 @@
 {
-  "name": "vuepwa",
-  "short_name": "vuepwa",
+  "name": "ftn-vue-pwa",
+  "short_name": "ftn-vue-pwa",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
