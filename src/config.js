@@ -1,10 +1,9 @@
 window.config = {
     "appName": "ftn-vue-pwa",
-    "locale": "en",
-    "locales": { 
-        "en": "EN",
-        "zh-CN": "\u4e2d\u6587",
-        "es": "ES" 
+    "locale": "id",
+    "locales": {
+        "id": "ID",
+        "en": "EN"
     },
     "githubAuth": null 
 }

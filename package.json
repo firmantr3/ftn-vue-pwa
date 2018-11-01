@@ -6,14 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "capacitor-copy": "vue-cli-service capacitor-copy",
-    "capacitor-init": "vue-cli-service capacitor-init",
-    "capacitor-open": "vue-cli-service capacitor-open",
-    "capacitor-update": "vue-cli-service capacitor-update"
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@capacitor/cli": "^1.0.0-alpha.38",
-    "@capacitor/core": "^1.0.0-alpha.38",
     "@fortawesome/fontawesome-svg-core": "^1.2.6",
     "@fortawesome/free-brands-svg-icons": "^5.4.1",
     "@fortawesome/free-regular-svg-icons": "^5.4.1",
@@ -23,9 +18,8 @@
     "bootstrap": "^4.1.1",
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
-    "node-sass": "^4.9.4",
-    "popper.js": "^1.14.3",
-    "sass-loader": "^7.1.0",
+    "popper.js": "^1.14.4",
+    "register-service-worker": "^1.0.0",
     "sweetalert2": "^7.19.3",
     "vform": "^1.0.0",
     "vue": "^2.5.17",
@@ -38,33 +32,16 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-plugin-pwa": "^3.1.0",
+    "@vue/cli-plugin-unit-mocha": "^3.1.0",
     "@vue/cli-service": "^3.0.5",
-    "vue-cli-plugin-meta": "^0.1.1",
-    "vue-cli-plugin-pwa": "^1.0.0-alpha.1",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.1.2",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "node-sass": "^4.9.4",
+    "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.17"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  }
 }
