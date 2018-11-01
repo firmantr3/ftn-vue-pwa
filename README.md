@@ -1,4 +1,6 @@
-# vuepwa
+# ftn-vue-pwa
+
+my vuejs scaffolding frontend for laravel apps
 
 ## Project setup
 ```
