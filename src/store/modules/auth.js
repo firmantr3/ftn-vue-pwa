@@ -45,7 +45,7 @@ export const mutations = {
 
 // actions
 export const actions = {
-  saveToken ({ commit, dispatch }, payload) {
+  saveToken ({ commit }, payload) {
     commit(types.SAVE_TOKEN, payload)
   },
 
@@ -66,7 +66,9 @@ export const actions = {
   async logout ({ commit }) {
     try {
       await axios.post('/api/logout')
-    } catch (e) { }
+    } catch (e) {
+      // continue regardless of error
+    }
 
     commit(types.LOGOUT)
   },
