@@ -5,5 +5,5 @@ window.config = {
         "id": "ID",
         "en": "EN"
     },
-    "githubAuth": null 
+    "githubAuth": null
 }

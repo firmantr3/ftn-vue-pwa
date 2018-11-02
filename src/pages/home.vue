@@ -1,7 +1,7 @@
 <template>
-  <card :title="$t('home')">
+  <b-card :header="$t('home')" header-tag="header">
     {{ $t('you_are_logged_in') }}
-  </card>
+  </b-card>
 </template>
 
 <script>

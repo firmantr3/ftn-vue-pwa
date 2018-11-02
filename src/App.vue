@@ -64,3 +64,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  /* Import Font Awesome Icons Set */
+  $fa-font-path: '~font-awesome/fonts/';
+  @import '~font-awesome/scss/font-awesome.scss';
+  /* Import Bootstrap Vue Styles */
+  @import '~bootstrap-vue/dist/bootstrap-vue.css';
+  // import main app style
+  @import 'assets/scss/app';
+</style>

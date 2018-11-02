@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-lg-8 m-auto">
-      <card :title="$t('register')">
+      <b-card :header="$t('register')" header-tag="header">
         <form @submit.prevent="register" @keydown="form.onKeydown($event)">
           <!-- Name -->
           <div class="form-group row">
@@ -42,16 +42,16 @@
           <div class="form-group row">
             <div class="col-md-7 offset-md-3 d-flex">
               <!-- Submit Button -->
-              <v-button :loading="form.busy">
+              <b-button variant="primary" :disabled="form.busy">
                 {{ $t('register') }}
-              </v-button>
+              </b-button>
 
               <!-- GitHub Register Button -->
               <login-with-github/>
             </div>
           </div>
         </form>
-      </card>
+      </b-card>
     </div>
   </div>
 </template>

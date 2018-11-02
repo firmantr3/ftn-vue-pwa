@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-lg-8 m-auto">
-      <card :title="$t('reset_password')">
+      <b-card :header="$t('reset_password')" header-tag="header">
         <form @submit.prevent="send" @keydown="form.onKeydown($event)">
           <alert-success :form="form" :message="status"/>
 
@@ -17,13 +17,13 @@
           <!-- Submit Button -->
           <div class="form-group row">
             <div class="col-md-9 ml-md-auto">
-              <v-button :loading="form.busy">
+              <b-button variant="primary" :disabled="form.busy">
                 {{ $t('send_password_reset_link') }}
-              </v-button>
+              </b-button>
             </div>
           </div>
         </form>
-      </card>
+      </b-card>
     </div>
   </div>
 </template>

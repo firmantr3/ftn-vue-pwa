@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-3">
-      <card :title="$t('settings')" class="settings-card">
+      <b-card :header="$t('settings')" class="settings-card" header-tag="header">
         <ul class="nav flex-column nav-pills">
           <li v-for="tab in tabs" :key="tab.route" class="nav-item">
             <router-link :to="{ name: tab.route }" class="nav-link" active-class="active">
@@ -10,7 +10,7 @@
             </router-link>
           </li>
         </ul>
-      </card>
+      </b-card>
     </div>
 
     <div class="col-md-9">

@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-lg-8 m-auto">
-      <card :title="$t('login')">
+      <b-card :header="$t('login')" header-tag="header">
         <form @submit.prevent="login" @keydown="form.onKeydown($event)">
           <!-- Email -->
           <div class="form-group row">
@@ -25,9 +25,9 @@
           <div class="form-group row">
             <div class="col-md-3"/>
             <div class="col-md-7 d-flex">
-              <checkbox v-model="remember" name="remember">
+              <b-form-checkbox id="remember-checkbox" v-model="remember" name="remember">
                 {{ $t('remember_me') }}
-              </checkbox>
+              </b-form-checkbox>
 
               <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
                 {{ $t('forgot_password') }}
@@ -38,16 +38,16 @@
           <div class="form-group row">
             <div class="col-md-7 offset-md-3 d-flex">
               <!-- Submit Button -->
-              <v-button :loading="form.busy">
+              <b-button variant="primary" :disabled="form.busy">
                 {{ $t('login') }}
-              </v-button>
+              </b-button>
 
               <!-- GitHub Login Button -->
               <login-with-github/>
             </div>
           </div>
         </form>
-      </card>
+      </b-card>
     </div>
   </div>
 </template>
