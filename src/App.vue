@@ -36,11 +36,9 @@ export default {
   }),
 
   metaInfo () {
-    const { appName } = window.config
-
     return {
-      title: appName,
-      titleTemplate: `%s · ${appName}`
+      title: APP_NAME,
+      titleTemplate: `%s · ${APP_NAME}`
     }
   },
 

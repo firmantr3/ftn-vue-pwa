@@ -39,7 +39,7 @@ export default {
   },
 
   data: () => ({
-    title: window.config.appName
+    title: APP_NAME
   }),
 
   computed: mapGetters({

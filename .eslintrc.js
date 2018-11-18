@@ -13,5 +13,10 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint'
+  },
+  globals: {
+    "APP_NAME": true,
+    "APP_LOCALE": true,
+    "PRODUCTION": true
   }
 }
