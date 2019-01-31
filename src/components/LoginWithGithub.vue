@@ -10,7 +10,7 @@ export default {
   name: 'LoginWithGithub',
 
   computed: {
-    githubAuth: () => window.config.githubAuth,
+    githubAuth: () => GITHUB_AUTH,
     url: () => `/api/oauth/github`
   },
 

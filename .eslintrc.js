@@ -17,6 +17,7 @@ module.exports = {
   globals: {
     "APP_NAME": true,
     "APP_LOCALE": true,
-    "PRODUCTION": true
+    "PRODUCTION": true,
+    "GITHUB_AUTH": true
   }
 }
