@@ -29,6 +29,8 @@
     "your_password": "Password Anda",
     "password_updated": "Password anda berhasil diperbarui!",
     "new_password": "Password Baru",
-    "login_with": "Masuk dengan",
-    "register_with": "Daftar dengan"
+    "login_with": "Masuk menggunakan",
+    "register_with": "Daftar menggunakan",
+    "update_available": "Versi baru tersedia",
+    "update_now": "Update sekarang?"
 }
