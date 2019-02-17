@@ -4,11 +4,18 @@ import router from '@/router'
 import swal from 'sweetalert2'
 import i18n from '@/plugins/i18n'
 
+axios.defaults.params = {}
+
 // Request interceptor
 axios.interceptors.request.use(request => {
+  request.baseURL = API_URL
+
   const token = store.getters['auth/token']
-  if (token) {
+  if (token && AUTH_TOKEN_HEADER) {
     request.headers.common['Authorization'] = `Bearer ${token}`
+  }
+  if (token && !AUTH_TOKEN_HEADER) {
+    request.params.token = token
   }
 
   const locale = store.getters['lang/locale']
