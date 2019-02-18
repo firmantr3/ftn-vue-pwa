@@ -22,6 +22,7 @@ const notifyUserAboutUpdate = worker => {
 
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
+    registrationOptions: { scope: SW_SCOPE },
     ready () {
       console.log(
         'App is being served from cache by a service worker.\n' +

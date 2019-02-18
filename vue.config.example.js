@@ -1,10 +1,12 @@
 const webpack = require('webpack')
 const packageJson = require('./package.json')
 
+const publicPath = process.env.NODE_ENV === 'production'
+    ? '/ftn-vue-pwa-demo/'
+    : '/'
+
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production'
-        ? '/'
-        : '/',
+    publicPath: publicPath,
     pwa: {
         workboxPluginMode: 'InjectManifest',
         workboxOptions: {
@@ -23,7 +25,8 @@ module.exports = {
                     null,
                 GITHUB_AUTH: JSON.stringify(false),
                 APP_VERSION: JSON.stringify(packageJson.version),
-                APP_PACKAGE_NAME: JSON.stringify(packageJson.name)
+                APP_PACKAGE_NAME: JSON.stringify(packageJson.name),
+                SW_SCOPE: JSON.stringify(publicPath)
             })
         ]
     }
