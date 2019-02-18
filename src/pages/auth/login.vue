@@ -38,7 +38,7 @@
           <div class="form-group row">
             <div class="col-md-7 offset-md-3 d-flex">
               <!-- Submit Button -->
-              <b-button variant="primary" :disabled="form.busy">
+              <b-button type="submit" variant="primary" :disabled="form.busy">
                 {{ $t('login') }}
               </b-button>
 

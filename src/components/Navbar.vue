@@ -5,39 +5,33 @@
         {{ appName }}
       </router-link>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false">
-        <span class="navbar-toggler-icon"/>
-      </button>
+      <b-navbar-toggle target="navbarToggler" />
 
-      <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
+      <b-collapse is-nav id="navbarToggler">
+        <b-navbar-nav>
           <locale-dropdown/>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
+        </b-navbar-nav>
 
-        <ul class="navbar-nav ml-auto">
+        <b-navbar-nav class="ml-auto">
           <!-- Authenticated -->
-          <li v-if="user" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark"
-               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <b-nav-item-dropdown
+            id="userAuthenticated"
+            right
+            v-if="user"
+          >
+            <template slot="button-content">
               <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
               {{ user.name }}
-            </a>
-            <div class="dropdown-menu">
-              <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
-                <fa icon="cog" fixed-width/>
-                {{ $t('settings') }}
-              </router-link>
-
-              <div class="dropdown-divider"/>
-              <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
-                <fa icon="sign-out-alt" fixed-width/>
-                {{ $t('logout') }}
-              </a>
-            </div>
-          </li>
+            </template>
+            <b-dropdown-item :to="{ name: 'settings.profile' }">
+              <i class="fa fa-fw fa-cog"></i>
+              {{ $t('settings') }}
+            </b-dropdown-item>
+            <b-dropdown-item @click.prevent="logout" href="#">
+              <i class="fa fa-fw fa-sign-out"></i>
+              {{ $t('logout') }}
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
           <!-- Guest -->
           <template v-else>
             <li class="nav-item">
@@ -51,8 +45,8 @@
               </router-link>
             </li>
           </template>
-        </ul>
-      </div>
+        </b-navbar-nav>
+      </b-collapse>
     </div>
   </nav>
 </template>
