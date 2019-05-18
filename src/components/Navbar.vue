@@ -1,9 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div>
+    <b-navbar toggleable="sm" type="light" variant="light">
     <div class="container">
-      <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
+      <b-navbar-brand id="navbrand" :to="{ name: user ? 'home' : 'welcome' }">
         {{ appName }}
-      </router-link>
+      </b-navbar-brand>
 
       <b-navbar-toggle target="navbarToggler" />
 
@@ -48,7 +49,8 @@
         </b-navbar-nav>
       </b-collapse>
     </div>
-  </nav>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
@@ -64,9 +66,11 @@ export default {
     appName: APP_NAME
   }),
 
-  computed: mapGetters({
-    user: 'auth/user'
-  }),
+  computed: {
+    ...mapGetters({
+      user: 'auth/user'
+    })
+  },
 
   methods: {
     async logout () {

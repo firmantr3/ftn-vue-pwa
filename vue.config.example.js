@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const packageJson = require('./package.json')
+const manifestJSON = require("./public/manifest.json");
 
 const publicPath = process.env.NODE_ENV === 'production'
     ? '/ftn-vue-pwa-demo/'
@@ -11,7 +12,11 @@ module.exports = {
         workboxPluginMode: 'InjectManifest',
         workboxOptions: {
             swSrc: 'src/service-worker.js'
-        }
+        },
+        themeColor: manifestJSON.theme_color,
+        name: manifestJSON.name,
+        shortName: manifestJSON.short_name,
+        msTileColor: manifestJSON.background_color
     },
     configureWebpack: {
         plugins: [
