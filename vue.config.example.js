@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const packageJson = require('./package.json')
-const manifestJSON = require("./public/manifest.json");
+const manifestJSON = require("./public/manifest.json")
 
 const publicPath = process.env.NODE_ENV === 'production'
     ? '/ftn-vue-pwa-demo/'

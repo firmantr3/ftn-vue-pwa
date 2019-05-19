@@ -9,7 +9,7 @@ Vue.use(Meta)
 Vue.use(Router)
 
 // The middleware for every page of the application.
-const globalMiddleware = ['locale', 'check-auth']
+const globalMiddleware = ['locale', 'check-auth'] // ['locale']
 
 // Load middleware modules dynamically.
 const routeMiddleware = resolveMiddleware(
@@ -27,7 +27,7 @@ export default router
  *
  * @return {Router}
  */
-function createRouter () {
+function createRouter() {
   const router = new Router({
     scrollBehavior,
     routes
@@ -46,7 +46,7 @@ function createRouter () {
  * @param {Route} from
  * @param {Function} next
  */
-async function beforeEach (to, from, next) {
+async function beforeEach(to, from, next) {
   // Get the matched components and resolve them.
   const components = await resolveComponents(
     router.getMatchedComponents({ ...to })
@@ -58,7 +58,11 @@ async function beforeEach (to, from, next) {
 
   // Start the loading bar.
   if (components[components.length - 1].loading !== false) {
-    router.app.$nextTick(() => router.app.$loading.start())
+    router.app.$nextTick(() => {
+      if (typeof (router.app.$loading) !== 'undefined') {
+        router.app.$loading.start()
+      }
+    })
   }
 
   // Get the middleware for all the matched components.
@@ -68,7 +72,9 @@ async function beforeEach (to, from, next) {
   callMiddleware(middleware, to, from, (...args) => {
     // Set the application layout only if "next()" was called with no args.
     if (args.length === 0) {
-      router.app.setLayout(components[0].layout || '')
+      if (typeof (router.app.setLayout) === 'function') {
+        router.app.setLayout(components[0].layout || '')
+      }
     }
 
     next(...args)
@@ -82,10 +88,12 @@ async function beforeEach (to, from, next) {
  * @param {Route} from
  * @param {Function} next
  */
-async function afterEach () {
+async function afterEach() {
   await router.app.$nextTick()
 
-  router.app.$loading.finish()
+  if (typeof (router.app.$loading) !== 'undefined') {
+    router.app.$loading.finish()
+  }
 }
 
 /**
@@ -96,14 +104,16 @@ async function afterEach () {
  * @param {Route} from
  * @param {Function} next
  */
-function callMiddleware (middleware, to, from, next) {
+function callMiddleware(middleware, to, from, next) {
   const stack = middleware.reverse()
 
   const _next = (...args) => {
     // Stop if "_next" was called with an argument or the stack is empty.
     if (args.length > 0 || stack.length === 0) {
       if (args.length > 0) {
-        router.app.$loading.finish()
+        if (typeof (router.app.$loading) !== 'undefined') {
+          router.app.$loading.finish()
+        }
       }
 
       return next(...args)
@@ -129,7 +139,7 @@ function callMiddleware (middleware, to, from, next) {
  * @param  {Array} components
  * @return {Array}
  */
-function resolveComponents (components) {
+function resolveComponents(components) {
   return Promise.all(components.map(component => {
     return typeof component === 'function' ? component() : component
   }))
@@ -141,7 +151,7 @@ function resolveComponents (components) {
  * @param  {Array} components
  * @return {Array}
  */
-function getMiddleware (components) {
+function getMiddleware(components) {
   const middleware = [...globalMiddleware]
 
   components.filter(c => c.middleware).forEach(component => {
@@ -165,7 +175,7 @@ function getMiddleware (components) {
  * @param  {Object|undefined} savedPosition
  * @return {Object}
  */
-function scrollBehavior (to, from, savedPosition) {
+function scrollBehavior(to, from, savedPosition) {
   if (savedPosition) {
     return savedPosition
   }
@@ -187,7 +197,7 @@ function scrollBehavior (to, from, savedPosition) {
  * @param  {Object} requireContext
  * @return {Object}
  */
-function resolveMiddleware (requireContext) {
+function resolveMiddleware(requireContext) {
   return requireContext.keys()
     .map(file =>
       [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)]
