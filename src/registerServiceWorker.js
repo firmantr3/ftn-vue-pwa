@@ -45,9 +45,11 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-var refreshing
-navigator.serviceWorker.addEventListener('controllerchange', function () {
-  if (refreshing) return
-  window.location.reload()
-  refreshing = true
-})
+if ('serviceWorker' in navigator) {
+  var refreshing
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (refreshing) return
+    window.location.reload()
+    refreshing = true
+  })
+}
