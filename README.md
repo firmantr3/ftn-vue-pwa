@@ -3,35 +3,44 @@
 my vuejs scaffolding frontend for laravel apps. [see demo](https://firmantr3.github.io/ftn-vue-pwa-demo)
 
 ## Project setup
-```
-npm install &&
+
+Clone this repository or use `degit` for clean start, then open terminal and cd to project directory, run:
+
+```bash
+yarn install &&
 cp vue.config.example.js vue.config.js
 ```
 
 ### Compiles and hot-reloads for development
-```
-npm run serve
+
+```bash
+yarn serve
 ```
 
 ### Compiles and minifies for production
-```
-npm run build
+
+```bash
+yarn build
 ```
 
 ### Run your tests
-```
-npm run test
+
+```bash
+yarn test
 ```
 
 ### Lints and fixes files
-```
-npm run lint
+
+```bash
+yarn lint
 ```
 
 ### Run your unit tests
-```
-npm run test:unit
+
+```bash
+yarn test:unit
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
