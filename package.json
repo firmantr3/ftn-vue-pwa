@@ -16,7 +16,7 @@
     "js-cookie": "^2.2.1",
     "register-service-worker": "^1.6.2",
     "sweetalert2": "^9.7.1",
-    "tar": "^6.0.1",
+    "tar": "^6.1.9",
     "vform": "^1.0.1",
     "vue": "^2.6.10",
     "vue-i18n": "^8.15.3",
